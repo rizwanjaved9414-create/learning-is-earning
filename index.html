@@ -35,35 +35,22 @@
     </div>
 
     <script>
-        let classifier; let video;
-        function setup() {
-            let canvas = createCanvas(320, 240);
-            canvas.parent('video-holder');
-            video = createCapture(VIDEO);
-            video.hide();
-            classifier = ml5.imageClassifier('MobileNet', () => {
-                document.getElementById('status').innerText = "AI Active ✅";
-                classifyVideo();
-            });
-        }
-        function classifyVideo() { classifier.classify(video, (err, res) => {
-            document.getElementById('label').innerText = res[0].label;
-            classifyVideo();
-        }); }
-        function draw() { image(video, 0, 0, width, height); }
-        function toggleTheme() {
-            const theme = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
-            document.documentElement.setAttribute("data-theme", theme);
-            document.getElementById("theme-toggle").innerText = theme === "dark" ? "☀️" : "🌙";
-        }
-        function saveReport() {
-            const text = `Learning is Earning Report\nResult: ${document.getElementById('label').innerText}`;
-            const blob = new Blob([text], { type: 'text/plain' });
-            const anchor = document.createElement('a');
-            anchor.href = URL.createObjectURL(blob);
-            anchor.download = 'AI_Report.txt';
-            anchor.click();
-        }
-    </script>
-</body>
-</html>
+        <section class="app-card">
+    <h3>🚀 Join Learning is Earning</h3>
+    <p>Register to start your AI journey!</p>
+    
+    <form action="https://api.web3forms.com" method="POST">
+         PASTE YOUR KEY HERE 13431a61-547e-4ce4-8dd4-092cdd098373
+        <input type="hidden" name="access_key" value="13431a61-547e-4ce4-8dd4-092cdd098373">
+        
+        <!-- 2. STUDENT DETAILS -->
+        <input type="text" name="name" placeholder="Full Name" required style="width:90%; padding:12px; margin-bottom:10px; border-radius:8px; border:1px solid #ccc;">
+        <input type="text" name="contact" placeholder="WhatsApp Number / Email" required style="width:90%; padding:12px; margin-bottom:10px; border-radius:8px; border:1px solid #ccc;">
+        
+        <!-- 3. HONEYPOT (Prevents Spam) -->
+        <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+
+        <!-- 4. SUBMIT BUTTON -->
+        <button type="submit" class="cta-button">Register Now</button>
+    </form>
+</section>
